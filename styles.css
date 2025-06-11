@@ -1,0 +1,55 @@
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  pointer-events: none;
+  user-select: none;
+}
+
+button {
+  background: rgba(153, 135, 135, 0.267);
+  color: white;
+  border: 4px solid;
+  padding: 0.5em;
+  font-size: 1.5em;
+  border-radius: 2em;
+  pointer-events: auto;
+  align-self: center;
+}
+
+h1,
+p {
+  font-size: 1.5em;
+  background: rgba(153, 135, 135, 0.267);
+  color: white;
+}
+
+.overlay-content {
+  flex-grow: 1;
+}
+
+#ar-instructions,
+#inline-instructions {
+  display: none;
+}
+
+body.inline #inline-instructions,
+body.playing #ar-instructions,
+body.ar-preparing #ar-instructions {
+  display: contents;
+}
+
+body.playing #go-button,
+body.playing #instructions {
+  visibility: hidden;
+}

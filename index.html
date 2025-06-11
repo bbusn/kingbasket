@@ -1,91 +1,20 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" />
-    <title>King Basket (Simplified)</title>
+    <title>King Basket</title>
+    <link rel="icon" href="./assets/favicon.png" />
+    <link rel="stylesheet" href="styles.css" />
     <script src="https://aframe.io/releases/1.1.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.min.js"></script>
     <script src="ar-components.js"></script>
-    <style>
-      body {
-        margin: 0;
-        font-family: sans-serif;
-      }
-      #overlay {
-        position: absolute;
-        inset: 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        pointer-events: none;
-      }
-      h1,
-      p {
-        color: white;
-        background: rgba(0, 0, 0, 0.5);
-        padding: 0.5em;
-      }
-      button {
-        pointer-events: auto;
-        font-size: 1.2em;
-        padding: 0.5em 1em;
-        margin: 0.5em;
-      }
-    </style>
-    <link type="favicon" rel="shortcut icon" href="favicon.ico" />
+    <script src="scripts/init.js" defer></script>
+    <script src="scripts/game.js" defer></script>
   </head>
   <body class="inline">
-    <a-scene
-      webxr="optionalFeatures: hit-test, dom-overlay; overlayElement: #overlay;"
-    >
-      <a-camera>
-        <a-entity
-          id="label"
-          text="value:Ready?; width:1;"
-          position="0 0 -1"
-        ></a-entity>
-      </a-camera>
+    <!-- A-Frame Scene -->
+    <div id="scene-container"></div>
 
-      <a-sphere
-        id="ball"
-        dynamic-body
-        radius="0.1"
-        color="orange"
-        position="0.1 2 -1.5"
-      ></a-sphere>
-
-      <a-entity id="hoop" hide-in-ar occlusion visible="false"> </a-entity>
-
-      <a-reticle target="#hoop" test="true">
-        <a-plane
-          rotation="-90 0 0"
-          width="0.2"
-          height="0.2"
-          src="arrow.png"
-          transparent="true"
-        ></a-plane>
-      </a-reticle>
-
-      <a-plane
-        hide-in-ar
-        material="color:green; static-body"
-        rotation="-90 0 0"
-        width="20"
-        height="20"
-      ></a-plane>
-      <a-sky hide-in-ar color="skyblue"></a-sky>
-    </a-scene>
-
-    <div id="overlay">
-      <h1>King Basket</h1>
-      <p>Select a flat surface to place the hoop.</p>
-      <button id="start">Start AR</button>
-      <button id="stop">Stop AR</button>
-    </div>
-
-    <script>
-      const scene = document.querySelector("a-scene");
-      document.getElementById("start").onclick = () => scene.enterVR();
-      document.getElementById("stop").onclick = () => scene.xrSession?.end();
-    </script>
+    <!-- UI Overlay -->
+    <div id="overlay-container"></div>
   </body>
 </html>
